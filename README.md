@@ -1,3 +1,5 @@
+[中文](README.md) | [English](README.en.md)
+
 # EndFlow · 知华电子料号停产与末次采购协作
 
 <img src="frontend/public/brand/logo.jpg" alt="知华科技" width="180" />
@@ -64,29 +66,43 @@
 
 ![登录](docs/screenshots/login.jpg)
 
+登录：使用实际账号进入授权工作空间。
+
 ### 业务人员未结工作台
 
 ![工作台](docs/screenshots/workbench.jpg)
+
+工作台：查看本人参与的未结通知与末次订购期限。
 
 ### 停产通知、需求缺口与冻结决策
 
 ![通知详情](docs/screenshots/notice.jpg)
 
+通知详情：维护产品用途快照、独立分配供给与冻结决策。
+
 ### 分批收货与独立冲正
 
 ![收货登记](docs/screenshots/receipts.jpg)
+
+收货登记：记录实际分批数量与凭证，独立冲正保留原行。
 
 ### 管理员账号维护
 
 ![账号](docs/screenshots/accounts.jpg)
 
+账号维护：配置部门、角色、岗位及启用状态。
+
 ### 角色与数据权限
 
 ![角色](docs/screenshots/permissions.jpg)
 
+角色与权限：维护接口权限及全部、部门、本人数据范围。
+
 ### 实际状态和采购金额统计
 
 ![统计](docs/screenshots/dashboard.jpg)
+
+统计：查看范围内状态、未下单逾期与已批准申请金额。
 
 ## 工程与运行环境
 
@@ -117,6 +133,8 @@ THIRD_PARTY_NOTICES.md / docs/licenses/  第三方版权
 
 ## 空库启动
 
+需要 Python 3、Docker Engine／Desktop 和 Compose v2，首次构建需要访问官方镜像及公开依赖仓库；源码开发另需上表中的 Java、Maven、Node 和 MySQL。
+
 ```bash
 python3 scripts/init-env.py
 # .env 生成独立强随机密码，文件权限0600，默认仅绑定本机。
@@ -124,7 +142,7 @@ docker compose config --quiet
 docker compose up -d --build --wait
 ```
 
-浏览器访问 **http://127.0.0.1:8120/**。管理员账号 `admin`，初始密码读取本机 `.env` 的 `ADMIN_PASSWORD`。没有硬编码通用演示密码。初始化只创建总部、四类岗位、权限菜单、类别与参数，不伪造通知或采购记录。已有数据库重启不会重置密码或覆盖数据。
+浏览器访问 **[http://127.0.0.1:8120/](http://127.0.0.1:8120/)**。管理员账号 `admin`，初始密码读取本机 `.env` 的 `ADMIN_PASSWORD`。没有硬编码通用演示密码。初始化只创建总部、四类岗位、权限菜单、类别与参数，不伪造通知或采购记录。已有数据库重启不会重置密码或覆盖数据。
 
 管理员先创建部门和需求编制员、采购执行员、独立复核员账号。复核员必须与编制员和采购员不同；人员属于通知部门并具备对应权限。操作顺序见 [使用手册](docs/操作手册.md)。
 
@@ -138,7 +156,7 @@ docker compose up -d --build --wait
 | `COOKIE_SECURE` | 本机HTTP为false；HTTPS环境设true |
 | `DATABASE_URL` / `DATABASE_USER` / `DATABASE_CATALOG` | 后端独立连接现有MySQL时可覆盖，目录与实际数据库名称一致 |
 
-数据库不发布主机端口。健康入口 `http://127.0.0.1:8120/actuator/health`；仅暴露 health。Compose 三个服务均使用健康检查并按顺序等待。
+数据库不发布主机端口。健康入口 [http://127.0.0.1:8120/actuator/health](http://127.0.0.1:8120/actuator/health)；仅暴露 health。Compose 三个服务均使用健康检查并按顺序等待。
 
 ### 不用容器开发
 
@@ -210,9 +228,15 @@ python3 scripts/release-check.py
 
 提交前运行格式、测试及构建；新增业务需包含状态、权限与数据库验证。保留知华与第三方版权，不提交客户资料、真实凭证、密码、Token、生产日志或个人数据。一般问题可在部署方指定的问题渠道反馈，提供版本及去敏步骤；安全漏洞请私下联系下方咨询微信，勿在公开反馈中粘贴漏洞载荷或凭证。第三方许可独立适用，本项目自有代码非商业条款见 [LICENSE](LICENSE)，并非 OSI 认定的开源许可。
 
+## 授权说明
+
+自有代码使用 [ZhuaTech Non-Commercial Source License 1.0](LICENSE)，仅限个人学习、技术研究与非商业交流。未经上海如静知华信息科技有限公司书面授权不得商用；企业私有化部署、收费交付或服务、SaaS 运营、转售及深度定制须另行取得授权。保留署名、官网、版权、许可证及授权联系方式；第三方依赖保持原许可。本项目属于“源码公开、非商业使用”，并非 OSI 标准开源许可，按现状提供，不宣称未经验证的生产可用性。
+
 ## 联系知华科技
 
 公司：**上海如静知华信息科技有限公司**。官网：https://www.zhuatech.cn/ 。商业授权、定制开发、部署与系统集成咨询微信：**zhuatech**、**zhuatech2**。
 
 ![微信 zhuatech](docs/images/wechat-zhuatech.png)
 ![微信 zhuatech2](docs/images/wechat-zhuatech2.png)
+
+商业授权或深度定制开发请联系知华科技。
